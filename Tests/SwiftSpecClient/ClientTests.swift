@@ -9,42 +9,25 @@ enum ExpandedSpec {
     struct NumberGeneratorTests {
 
         // #context
-        @Suite(".generateNumber")
-        struct GenerateNumberContext {
+        @Suite("when generating a number")
+        struct WhenCalled {
 
-            // #when
-            @Suite("when called")
-            struct WhenCalled {
-
-                // #it
-                @Test("it should generate a number between 0 and 10")
-                func it_should_generate_a_number_between_0_and_10() async throws {
-                    #expect(false == true)
-                }
-
-                // #it
-                @Test("it should generate a whole number")
-                func it_should_generate_a_whole_number_between_0_and_10() async throws {
-                    #expect(false == true)
-                }
+            // #it
+            @Test("it returns a number between 0 and 10")
+            func it_returns_a_number_between_0_and_10() async throws {
+                #expect(true)
             }
         }
     }
 }
 
-//enum MacroSpec {
-//
-//    #define("NumberGenerator") {
-//        #context(".generateNumber") {
-//            #when("when called") {
-//                #it("it should generate a number between 0 and 10") {
-//                    #expect(false == true)
-//                }
-//
-//                #it("it should generate a whole number") {
-//                    #expect(false == true)
-//                }
-//            }
-//        }
-//    }
-//}
+enum MacroSpec {
+
+    #define("NumberGenerator") {
+        #context("when generating a number") {
+            #it("it returns a number between 0 and 10") {
+                #expect(false == true)
+            }
+        }
+    }
+}

@@ -20,39 +20,50 @@ final class SwiftSpecTests: XCTestCase {
         testMacros = [
             "define": DefineMacro.self,
             "context": ContextMacro.self,
-            "when": WhenMacro.self,
             "it": ItMacro.self,
+            "test": TestMacro.self
         ]
         #else
         throw XCTSkip("macros are only supported when running tests for the host platform")
         #endif
     }
 
+    func test_exploration() {
+        assertMacroExpansion(
+            #"""
+            #test("MyType") {
+                // FOO
+            }
+            """#,
+            expandedSource: #"""
+            @Suite("MyType")
+            struct MyTypeTests {
+                // FOO
+            }
+            """#,
+            macros: testMacros
+        )
+    }
+
     func test_should_expand_nested_macros() throws {
         assertMacroExpansion(
             #"""
-            #define("MyType") {
-                #context("#myMethod") {
-                    #when("called") {
-                        #it("should do something") {}
+            #define("NumberGenerator") {
+                #context("when generating a number") {
+                    #it("it returns a number between 0 and 10") {
+                        #expect(false == true)
                     }
                 }
             }
             """#,
             expandedSource: #"""
-            @Suite("MyType")
-            struct MyTypeTests
-            {
-                @Suite("#myMethod")
-                struct MyMethodContext
-                {
-                        @Suite("when called")
-                        struct WhenCalled
-                        {
-                                        @Test("it should do something")
-                                        func it_should_do_something() async throws
-                                        {
-                                                                    }
+            @Suite("NumberGenerator")
+            struct NumberGeneratorTests {
+                @Suite("when generating a number")
+                struct WhenGeneratingANumberContext {
+                        @Test("it should do something")
+                        func it_should_do_something() async throws {
+                                        #expect(false == true)
                                     }
                     }
             }

@@ -26,8 +26,7 @@ public struct ItMacro: DeclarationMacro {
 
         return [#"""
                 @Test("it should do something")
-                func it_should_do_something() async throws
-                \#(body)
+                func it_should_do_something() async throws \#(body)
                 """#]
     }
 }

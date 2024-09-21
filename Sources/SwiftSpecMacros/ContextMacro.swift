@@ -26,9 +26,8 @@ public struct ContextMacro: DeclarationMacro {
         }
 
         return [#"""
-                @Suite("#myMethod")
-                struct MyMethodContext
-                \#(body)
+                @Suite("when generating a number")
+                struct WhenGeneratingANumberContext \#(body)
                 """#]
     }
 }

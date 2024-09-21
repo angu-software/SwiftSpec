@@ -10,6 +10,7 @@
 
 #if canImport(Testing)
 @freestanding(declaration, names: arbitrary)
-public macro context(_ label: StaticString, _ body: () -> Void) = #externalMacro(module: "SwiftSpecMacros",
-                                                                                 type: "ContextMacro")
+public macro context(_ label: StaticString,
+                     _ body: @escaping () -> Void) = #externalMacro(module: "SwiftSpecMacros",
+                                                                    type: "ContextMacro")
 #endif

@@ -41,8 +41,7 @@ final class DeclareMacroTests: XCTestCase {
             """#,
             expandedSource: #"""
             @Suite("MyType")
-            struct MyTypeTests
-            {
+            struct MyTypeTests {
                 // My Code
             }
             """#,

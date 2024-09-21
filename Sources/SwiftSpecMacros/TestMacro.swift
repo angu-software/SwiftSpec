@@ -1,5 +1,5 @@
 //
-//  DeclareMacro.swift
+//  TestMacro.swift
 //  SwiftSpec
 //
 //  Created by Andreas Guenther on 20.09.24.
@@ -9,7 +9,7 @@ import SwiftSyntax
 import SwiftSyntaxBuilder
 import SwiftSyntaxMacros
 
-public struct DefineMacro: DeclarationMacro {
+public struct TestMacro: DeclarationMacro {
 
     enum Error: Swift.Error {
         case missingTypeName

@@ -13,7 +13,7 @@ struct SwiftSpecPlugin: CompilerPlugin {
     let providingMacros: [Macro.Type] = [
         DefineMacro.self,
         ContextMacro.self,
-        WhenMacro.self,
-        ItMacro.self
+        ItMacro.self,
+        TestMacro.self
     ]
 }
