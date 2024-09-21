@@ -2,7 +2,7 @@ import Testing
 
 import SwiftSpec
 
-enum EspandedSpec {
+enum ExpandedSpec {
 
     // #define
     @Suite("NumberGenerator")
